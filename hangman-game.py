@@ -1,6 +1,7 @@
 from random import choice
 from hangman_words import words
 from hangman_art import stages, logo
+import os
 word = choice(words)
 model = ['_' for _ in range(0, len(word))]
 rights = 7
@@ -17,6 +18,7 @@ while True:
         print("You lost!")
         break
     guess = input("Enter your letter guess: ").lower()
+    os.system('cls||clear')
     if guess in word:
         for i in range(0, len(word)):
             if word[i] == guess:
@@ -28,4 +30,5 @@ while True:
         #TODO-2: - If guess is not a letter in the chosen_word,
         #Then reduce 'lives' by 1. 
         rights -= 1
+        print("".join(model), end="\n\n")
         print(stages[rights])
