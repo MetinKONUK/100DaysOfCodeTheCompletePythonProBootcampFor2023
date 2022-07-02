@@ -21,15 +21,24 @@ operations['-'] = substract
 operations['*'] = multiply
 operations['/'] = divide
 
-num1 = int(input("What's the first number?: "))
 
-for key in operations:
-    print(key)
-
-operation = input("Pick an operation from the line above: ")
-
-num2 = int(input("What's the second number?: "))
-
-function = operations[operation]
-
-print(f"{num1} {operation} {num2} = {function(num1, num2)}")
+def calculate(ans = False):
+    num1 = int(input("What's the first number?: ")) if not ans else ans
+    
+    
+    for key in operations:
+        print(key)
+        
+    operation = input("Pick an operation from the line above: ")
+    
+    num2 = int(input("What's the second number?: "))
+    
+    function = operations[operation]
+    
+    ans = function(num1, num2)
+    
+    print(f"{num1} {operation} {num2} = {ans}")
+    
+    char = input(f"Type 'y' to continue calculation with {ans}, or type 'n' to exit.: ").lower()
+    return calculate(ans) if char == 'y' else None
+calculate()
