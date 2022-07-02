@@ -1,3 +1,4 @@
+from art import logo
 operations = dict()
 
 def add(n1, n2):
@@ -21,6 +22,7 @@ operations['-'] = substract
 operations['*'] = multiply
 operations['/'] = divide
 
+print(logo)
 
 def calculate(ans = False):
     num1 = int(input("What's the first number?: ")) if not ans else ans
