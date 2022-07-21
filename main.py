@@ -11,5 +11,4 @@ def main():
     elif guess < number:
         print("Too low!")
     else:
-        print("Correct!")
-    
+        print(f"Correct! Number was {number}.")
