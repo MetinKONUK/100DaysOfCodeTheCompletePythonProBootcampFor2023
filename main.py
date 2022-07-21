@@ -5,10 +5,17 @@ print(text)
 
 def main():
     number = randint(1, 100)
-    guess = int(input("Enter a number in a range of [1, 100]"))
-    if guess > number:
-        print("Too high!")
-    elif guess < number:
-        print("Too low!")
-    else:
-        print(f"Correct! Number was {number}.")
+    turns = 10
+    while True:
+        guess = int(input("Enter a number in a range of [1, 100]"))
+        if guess == number:
+            print(f"Correct! Number was {number}.")
+            break
+        elif guess < number:
+            print("Too low!")
+        else:
+            print("Too high!")
+        turns -= 1
+        if not turns:
+            print(f"Out of turns! The number was {number}.")
+            break
