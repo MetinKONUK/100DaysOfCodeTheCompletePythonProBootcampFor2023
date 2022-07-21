@@ -6,3 +6,10 @@ print(text)
 def main():
     number = randint(1, 100)
     guess = int(input("Enter a number in a range of [1, 100]"))
+    if guess > number:
+        print("Too high!")
+    elif guess < number:
+        print("Too low!")
+    else:
+        print("Correct!")
+    
