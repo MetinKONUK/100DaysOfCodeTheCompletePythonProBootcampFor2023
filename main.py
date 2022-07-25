@@ -1,26 +1,14 @@
-from menu import Menu, MenuItem
-from coffee_maker import CoffeeMaker
-from money_machine import MoneyMachine
+from question_model import Question
+from data import question_data
+from quiz_brain import QuizBrain
 
 
 def main() -> None:
-    menu = Menu()
-    machine = CoffeeMaker()
-    till = MoneyMachine()
-    while True:
-        order = input(f"What would you like? ({menu.get_items()}): ")
-        if order == "report":
-            machine.report()
-            till.report()
-        elif order in menu.get_items():
-            item: MenuItem = menu.find_drink(order)
-            if machine.is_resource_sufficient(item) and till.make_payment(item.cost):
-                machine.make_coffee(item)
-        elif order == "stop":
-            break
-        else:
-            print("Insufficient request!")
-    print("Serving you was a pleasure...\n\t-Coffee Machine")
+    question_bank: list = [Question(question["question"], question["correct_answer"]) for question in question_data]
+    qb: QuizBrain = QuizBrain(question_bank)
+    while qb.still_has_questions():
+        qb.next_question()
+    print(f"You've completed the quiz!\nYour final score is {qb.score}/{qb.question_number}.")
 
 
 main()
