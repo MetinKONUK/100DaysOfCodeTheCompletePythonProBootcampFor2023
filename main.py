@@ -8,20 +8,18 @@ def color_picker() -> str:
     return choice(colours)
 
 
-def random_walk(pen: Turtle, directions: list, distance: float, width: int, speed: str, cycles: int) -> None:
-    pen.pensize(width)
-    pen.speed(speed)
-    while cycles:
+def spirograph(pen: Turtle, offset: int, radius: float):
+    pen.speed("fastest")
+    circle_count = 360 // offset
+    for _ in range(circle_count):
         pen.color(color_picker())
-        pen.setheading(choice(directions))
-        pen.forward(distance)
-        cycles -= 1
+        pen.circle(radius)
+        pen.setheading(pen.heading() + offset)
 
 
 def main() -> None:
     pen = Turtle()
-    directions = [0, 90, 180, 270]
-    random_walk(pen, directions, 10, 4, "fastest", 200)
+    spirograph(pen, 5, 100)
     screen = Screen()
     screen.exitonclick()
 
