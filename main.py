@@ -1,16 +1,19 @@
 from turtle import Turtle, Screen
 
 
-def fr(pen: Turtle, distance, angle):
-    pen.forward(distance)
-    pen.rt(angle)
+def dashed(pen: Turtle, space: float, length: float) -> None:
+    """Draw dashed line with turtle."""
+    pen.forward(length)
+    pen.penup()
+    pen.forward(space)
+    pen.pendown()
 
 
-def main():
+def main() -> None:
     pen = Turtle()
     pen.shape("turtle")
-    for _ in range(4):
-        fr(pen, 100, 90)
+    for _ in range(10):
+        dashed(pen, 5, 10)
     screen = Screen()
     screen.exitonclick()
 
